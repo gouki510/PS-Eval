@@ -1,0 +1,89 @@
+[tool.poetry]
+name = "sae-lens"
+version = "3.4.1"
+description = "Training and Analyzing Sparse Autoencoders (SAEs)"
+authors = ["Joseph Bloom"]
+readme = "README.md"
+packages = [{include = "sae_lens"}]
+include = ["pretrained_saes.yaml"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+transformer-lens = "^1.14.0"
+transformers = "^4.38.1"
+plotly = "^5.19.0"
+plotly-express = "^0.4.1"
+matplotlib = "^3.8.3"
+matplotlib-inline = "^0.1.6"
+datasets = "^2.17.1"
+babe = "^0.0.7"
+nltk = "^3.8.1"
+sae-vis = "^0.2.18"
+safetensors = "^0.4.2"
+typer = "^0.12.3"
+mamba-lens = { version = "^0.0.4", optional = true }
+pyzmq = "26.0.0"
+automated-interpretability = "^0.0.3"
+python-dotenv = "^1.0.1"
+pyyaml = "^6.0.1"
+pytest-profiling = "^1.7.0"
+zstandard = "^0.22.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "24.4.0"
+pytest = "^8.0.2"
+pytest-cov = "^4.1.0"
+pre-commit = "^3.6.2"
+flake8 = "7.0.0"
+isort = "5.13.2"
+pyright = "1.1.365"
+mamba-lens = "^0.0.4"
+ansible-lint = { version = "^24.2.3", markers = "platform_system != 'Windows'" }
+botocore = "^1.34.101"
+boto3 = "^1.34.101"
+docstr-coverage = "^2.3.2"
+mkdocs = "^1.5.3"
+mkdocs-material = "^9.5.15"
+mkdocs-autorefs = "^1.0.1"
+mkdocs-section-index = "^0.3.8"
+mkdocstrings = "^0.24.1"
+mkdocstrings-python = "^1.9.0"
+
+[tool.poetry.extras]
+mamba = ["mamba-lens"]
+
+
+[tool.isort]
+profile = "black"
+src_paths = ["sae_lens", "tests"]
+
+[tool.pyright]
+typeCheckingMode = "strict"
+reportMissingTypeStubs = "none"
+reportUnknownMemberType = "none"
+reportUnknownArgumentType = "none"
+reportUnknownVariableType = "none"
+reportUntypedFunctionDecorator = "none"
+reportUnnecessaryIsInstance = "none"
+reportUnnecessaryComparison = "none"
+reportConstantRedefinition = "none"
+reportUnknownLambdaType = "none"
+reportPrivateUsage = "none"
+reportDeprecated = "none"
+ignore = [
+    "**/wandb/**"
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.semantic_release]
+version_variables = [
+    "sae_lens/__init__.py:__version__",
+    "pyproject.toml:version",
+]
+branch = "main"
+build_command = "pip install poetry && poetry build"
