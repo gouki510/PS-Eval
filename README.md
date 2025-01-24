@@ -1,5 +1,7 @@
 # PS-Eval: Evaluation Framework for Sparse Autoencoders (SAEs)
 
+paper link : https://arxiv.org/abs/2501.06254  
+
 ![image](https://github.com/gouki510/PS-Eval/blob/main/fig1_v5.png)
 ## Installation
 
